@@ -18,11 +18,30 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <header>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "新規登録", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+    <% end %>
+  </header>
+
+
 
   <body>
+    <p><%= notice %></p>
+    <p><%= alert %></p>
     <%= yield %>
   </body>
 </html>

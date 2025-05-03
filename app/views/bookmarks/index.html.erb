@@ -1,0 +1,15 @@
+
+
+
+<%= link_to "add new",new_bookmark_path %>
+<% if @bookmarks == nil %>
+    <p><%="ブックマークが見つかりませんでした"%></p>
+<%else%>
+    <ul>
+    <% @bookmarks.each do |bookmark| %>
+        <p><%= bookmark.title %></p>
+        <p><%= link_to "detail",bookmark_path(bookmark)%><p>
+        <%= button_to "delete",bookmark_path(bookmark),method: :delete%>
+    <%end%>
+    </ul>
+<%end%>

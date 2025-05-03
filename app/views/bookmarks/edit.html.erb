@@ -1,0 +1,31 @@
+<h1> edit bookmark </h1>
+<%= form_with model: @bookmark do |f| %>
+<div>
+<%= f.label :title%>
+<%= f.text_field :title%>
+<% if @bookmark.errors.full_messages_for(:title).any? %>
+<ul>
+    <% @bookmark.errors.full_messages_for(:title).each do |message| %>
+    <li><%= message %></li>
+    <%end%>
+</ul>
+<%end%>
+</div>
+
+<div>
+<%= f.label :url %>
+<%= f.text_field :url%>
+</div>
+
+<div>
+<%= f.label :body %>
+<%= f.text_area :body%>
+</div>
+
+<div>
+<%= f.submit %>
+</div>
+
+<%end %>
+
+<p><%= link_to "back",bookmark_path(@bookmark) %></p>

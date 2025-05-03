@@ -1,0 +1,7 @@
+<%= @bookmark.body %>
+
+<a href = "<%= @bookmark.url%>">go link</a>
+
+<%= button_to "edit", edit_bookmark_path(@bookmark),method: :get  %>
+
+<%= link_to "back", bookmarks_path %>
